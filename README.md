@@ -1,7 +1,7 @@
 # Moli
 
 
-## Supported platform
+## Supported platforms
 
 * browser
 * android
