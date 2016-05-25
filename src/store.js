@@ -8,7 +8,7 @@ export const actions = {
 
 	goEdit(id) {
 		state.editing = true
-		state.onEditNote = state.notes[id]
+		state.onEditNote = Object.assign({}, state.notes[id])
 	},
 
 	cancelEdit() {
