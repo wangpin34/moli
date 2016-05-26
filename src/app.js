@@ -1,5 +1,4 @@
 import Vue from 'vue'
-// require a *.vue component
 import App from './components/App.vue'
 
 /*
@@ -40,7 +39,7 @@ var app = {
         app.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+    receivedEvent: function() {
         Vue.config.devtools = true
 
 		// mount a root Vue instance
@@ -50,6 +49,7 @@ var app = {
 		    // include the required component
 		    // in the options
 		    app: App
+
 		  }
 		})
     }

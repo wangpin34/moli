@@ -11,15 +11,18 @@ export const actions = {
 		state.onEditNote = Object.assign({}, state.notes[id])
 	},
 
-	cancelEdit() {
-		state.editing = false
-		state.onEditNote = null
-	},
+	addNote(note = {}) {
+		let id = Math.random() + ''
+		note.id = id
+		note.title = ''
+		note.content = ''
+		note.createdAt = new Date()
+		note.updateAt = new Date()
 
-	addNote() {
-		Object.assign(state.notes, {})
+		state.notes[id] = note
+		state.onEditNote = Object.assign({}, note)
 
-		state.editing = false		
+		state.editing = true		
 	},
 
 	updateNote(id, {title, content}) {
@@ -30,6 +33,10 @@ export const actions = {
 		state.editing = false
 	},
 
+	cancelEdit() {
+		state.editing = false
+		state.onEditNote = null
+	},
 
 	fetchNotes(notes) {
 		state.notes = Object.assign(state.notes, notes)

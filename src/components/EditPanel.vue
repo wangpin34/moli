@@ -31,7 +31,7 @@ $width: 80%;
 	input {
 		width: $width;
 		margin: 0 auto;
-		height: 10%;
+		height: 5%;
 		display: block;
 
 		border-radius: .5rem;
