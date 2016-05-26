@@ -9,8 +9,9 @@ module.exports = {
         vendor: ['vue']
     },
     output: {
-        path: path.join(__dirname, 'www/js'),
-        filename: 'index.js'
+        path: path.join(__dirname, '/www/js'),
+        filename: 'index.js',
+        publicPath: '/js/'
     },
     module: {
         loaders: [
@@ -20,9 +21,10 @@ module.exports = {
     },
     plugins: [new webpack.optimize.CommonsChunkPlugin({
                     name: 'vendor',
-                    path: path.join(__dirname,'www/js'),
+                    path: path.join(__dirname,'/www/js'),
+                    publicPath: '/js',
                     filename: 'vendor.js',
                     minChunks: Infinity
               }),
-              new webpack.HotModuleReplacementPlugin( {hot: true} ),]
+              new webpack.HotModuleReplacementPlugin({ hot: true }),]
 };
