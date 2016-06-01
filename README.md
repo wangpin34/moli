@@ -20,3 +20,7 @@ cordova-plugin-whitelist 1.2.2 "Whitelist"
 npm run build
 ```
 
+### Dev progress
+* v0.0.1
+
+![v0.0.1](http://rawgit.com/wangpin34/moli/master/assets/dev-progress/v0.0.1.gif)
