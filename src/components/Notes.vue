@@ -20,8 +20,7 @@ div.notes {
 	min-height: 100%;
 
   ul {
-    padding : 1rem 1rem 1rem 1rem;
-
+    padding : 1rem 1rem 8rem 1rem;
     li {
         background: $moli-green;
         list-style-type: none;
@@ -91,7 +90,7 @@ export default {
   	this.actions.fetchNotes(notes)
   	return {
   		content: 'Edit text',
-  		notes: this.actions.getNotes(),
+  		notes: this.state.notes,
   	}
   },
   methods: {

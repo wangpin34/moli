@@ -1,3 +1,5 @@
+import fs from 'fs-h5'
+
 export const state = {
 	notes: {},
 	onEditNote: null,
@@ -6,48 +8,44 @@ export const state = {
 
 export const actions = {
 
+	//Go to edit the select note
 	goEdit(id) {
 		state.editing = true
 		state.onEditNote = Object.assign({}, state.notes[id])
 	},
 
-	addNote(note = {}) {
-		let id = Math.random() + ''
-		note.id = id
-		note.title = ''
-		note.content = ''
-		note.createdAt = new Date()
-		note.updateAt = new Date()
-
-		state.notes[id] = note
+	//Go to add a new note
+	addNote() {
+		let note = addNote()
 		state.onEditNote = Object.assign({}, note)
-
 		state.editing = true		
 	},
 
-	updateNote(id, {title, content}) {
-		state.notes[id].title = title;
-		state.notes[id].content = content;
-		state.notes[id].updatedAt = new Date()
-
+	//Update the specify note
+	updateNote(note) {
+		note = Object.assign({}, note)
+		if(!state.notes[note.id]) {
+			state.notes[note.id] = note
+		}
+		note.updatedAt = new Date()
 		state.editing = false
 	},
 
+	//Cancel current edit, it shall be add note or update note
 	cancelEdit() {
 		state.editing = false
 		state.onEditNote = null
 	},
 
+	//Fetch notes from local file system
 	fetchNotes(notes) {
+		//let notes = []
 		state.notes = Object.assign(state.notes, notes)
-	},
-
-	getNotes() {
-		return state.notes
 	}
+
 }
 
-const addNote = (title, content) => {
+const addNote = (title = '', content = '') => {
 	return {
 		id: Math.random() + '',
 		title,

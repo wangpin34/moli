@@ -1,5 +1,6 @@
 <template>
   <div class="moli">
+    <app-head v-show="!state.editing"></app-head>
     <notes v-if="!state.editing" :state="state" :actions="actions" transition="slide"></notes>
     <edit-panel v-else :state="state" :actions="actions" transition="slide"></edit-panel>
   </div>
@@ -43,6 +44,7 @@ div.moli {
 
 <script>
 import { state, actions } from '../store'
+import AppHead from './AppHead.vue'
 import Notes from './Notes.vue'
 import EditPanel from './EditPanel.vue'
 
@@ -56,6 +58,7 @@ export default {
   	}
   },
   components: {
+    AppHead,
     Notes,
     EditPanel
   }

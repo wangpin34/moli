@@ -25,9 +25,7 @@ export default {
   name: 'note',
   props:['data'],
   methods: {
-  	edit: () => {
-
-  	}
+  
   }
 }
 </script>

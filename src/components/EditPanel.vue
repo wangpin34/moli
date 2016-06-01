@@ -1,12 +1,11 @@
 <template>
   <div class="edit-panel">
-  	<h7>{{date}}</h7>
-  	<input type="text" v-model="note.title" placeholder="Title is required" />
-  	<textarea v-model="note.content" placeholder="Content is required">
+  	<input type="text" v-model="note.title" v-on:keydown.self="handleTitle"/>
+  	<textarea v-model="note.content" v-on:keydown.self="handleContent">
   	</textarea>
   	<div class="btns">
-  		<button v-on:click.stop.prevent="save">save</button>
-  		<button v-on:click.stop.prevent="cancel">cancel</button>
+  		<span v-on:click.stop.prevent="save">save</span>
+  		<span v-on:click.stop.prevent="cancel">cancel</span>
   	</div>
   </div>
 </template>
@@ -21,12 +20,6 @@ $width: 80%;
 	border-radius: .5rem;
 	padding: 1rem;
 	display: block;
-
-	h7 {
-		width: 100%;
-		height:10%;
-		display: block;
-	}
 
 	input {
 		width: $width;
@@ -63,18 +56,23 @@ $width: 80%;
 	}
 
 	.btns {
+		width: $width;
+		margin: 0 auto;
 		height: 10%;
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 
-		button {
+		span {
 			height: 3rem;
-			padding: .5rem;
-
+			padding: .5rem 3rem;
+			line-height: 3rem;
+			border: 1px solid #ffffff;
 			border-radius: .5rem;
 			font-size: 3rem;
-			color: #CCF3E4;
-			background: gray;
+			color: #000000;
+			cursor: pointer;
+			vertical-align: middle;
+			text-align: center;
 		}
 	}
 
@@ -90,17 +88,28 @@ export default {
   props:['state','actions'],
   data() {
   	let date = new Date()
+  	let note = this.state.onEditNote
   	return {
-  		note: this.state.onEditNote,
+  		note: note,
+  		userTitle: !!note.title,
   		date: (date.getMonth() + 1) + '/' + date.getDate()
   	}
   },
   methods:{
   	save() {
-  		this.actions.updateNote(this.note.id, {title:this.note.title, content: this.note.content})
+  		this.actions.updateNote(this.note)
   	},
   	cancel() {
   		this.actions.cancelEdit()
+  	},
+  	handleTitle() {
+  		this.userTitle = true
+  	},
+  	handleContent() {
+  		//Use first 10 chars of content as title if user has not privide title
+  		if(!this.userTitle){
+  			this.note.title = this.note.content.substring(0, 10)
+  		}
   	}
   }
 }
