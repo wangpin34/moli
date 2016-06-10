@@ -22,9 +22,7 @@ export const actions = {
 	//Update the specify note
 	updateNote(note) {
 		note = Object.assign({}, note)
-		if(!state.notes[note.id]) {
-			state.notes[note.id] = note
-		}
+		state.notes[note.id] = note
 		note.updatedAt = new Date()
 		state.editing = false
 	},
