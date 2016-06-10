@@ -3,7 +3,7 @@
   	<input type="text" v-model="note.title" v-on:keydown.self="handleTitle"/>
   	<textarea v-model="note.content" v-on:keydown.self="handleContent">
   	</textarea>
-  	<div class="btns">
+  	<div class="btns-editing">
   		<span v-on:click.stop.prevent="save">save</span>
   		<span v-on:click.stop.prevent="cancel">cancel</span>
   	</div>
@@ -15,13 +15,16 @@
 $width: 80%;
 
 .edit-panel {
+	width: 100%;
 	height: 100%;
-	background: #CCF3E4;
+	min-height: 100%;
+	padding-top: 20%;
+	background: #f8f8f8;;
 	border-radius: .5rem;
-	padding: 1rem;
 	display: block;
 
 	input {
+		background: #CCF3E4;
 		width: $width;
 		margin: 0 auto;
 		height: 5%;
@@ -31,7 +34,6 @@ $width: 80%;
 		border-width: 0;
 		font-size: 3.5rem;
 		color: #000000;
-		background: #ffffff;
 
 		padding: .5rem;
 
@@ -39,6 +41,7 @@ $width: 80%;
 	}
 
 	textarea {
+		background: #CCF3E4;
 		width: $width;
 		margin: 0 auto;
 		height: 60%;
@@ -48,14 +51,13 @@ $width: 80%;
 		border-width: 0;
 		font-size: 3rem;
 		color: #000000;
-		background: #ffffff;
 
 		padding: .5rem;
 
 		margin-bottom: 2rem;
 	}
 
-	.btns {
+	.btns-editing {
 		width: $width;
 		margin: 0 auto;
 		height: 10%;
@@ -63,6 +65,7 @@ $width: 80%;
 		justify-content: space-between;
 
 		span {
+			background: #CCF3E4;
 			height: 3rem;
 			padding: .5rem 3rem;
 			line-height: 3rem;
