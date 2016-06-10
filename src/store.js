@@ -1,5 +1,3 @@
-import fs from 'fs-h5'
-
 export const state = {
 	notes: {},
 	onEditNote: null,
