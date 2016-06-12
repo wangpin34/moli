@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget xmlns="http://www.w3.org/ns/widgets" 
+    xmlns:gap="http://phonegap.com/ns/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="me.app.id" 
+    version="1.0.0">
     <name>Moli</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -16,7 +20,16 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <preference name="SplashScreen" value="screen"/>
+<!--     <preference name="AutoHideSplashScreen" value="true" /> -->
+    <preference name="SplashScreenDelay" value="1500"/>
+<!--     <feature name="SplashScreen" >
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature> -->
     <platform name="android">
+        <icon src="res/android/timg.png" />  
+        <splash src="res/android/splash.png"/>
         <allow-intent href="market:*" />
         <preference name="android-minSdkVersion" value="10" />
         <preference name="AndroidPersistentFileLocation" value="Compatibility" />
@@ -25,4 +38,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <gap:config-file platform="android" parent="/manifest">
+        <application android:debuggable="true" />
+    </gap:config-file>
 </widget>
