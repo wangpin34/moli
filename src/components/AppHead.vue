@@ -1,9 +1,9 @@
 <template>
 	<div class="header">
-		<h1>MOLI</h1>
+		<h3>MOLI({{ total }})</h3>
 	</div>
 </template>
-<style lang="sass" scoped>
+<style lang="sass">
 
 div.header{
 	position: fixed;
@@ -14,21 +14,23 @@ div.header{
 	background: #f8f8f8;
 	border-bottom: 1px solid #CCF3E4;
 
-	h1 {
-		text-align: center;
+	h3 {
+		text-align: left;
 		margin: 1rem auto;
+		padding: 1rem;
 	}
 }
 
 </style>
 <script>
+import store from '../store'
 
 export default {
-	name: 'head',
-	props: [],
-
+	name: 'app-head',
 	data() {
-		return {}
+		return {
+			total : Object.keys(store.state.notes).length,
+		}
 	},
 
 	methods: {

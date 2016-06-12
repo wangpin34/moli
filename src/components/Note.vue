@@ -1,7 +1,7 @@
 <template>
   <div class="note">
    	<h5>{{data.title}}</h5>
-   	<p>{{data.content}}</p>
+   	<p>{{data.content.length>10 ? data.content.substr(0,10) + '   ...' : data.content }}</p>
   </div>
 </template>
 

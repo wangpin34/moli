@@ -1,11 +1,11 @@
 <template>
   <div class="edit-panel">
-  	<input type="text" v-model="note.title" v-on:keydown.self="handleTitle"/>
+  	<input type="text" v-model="note.title" v-on:keydown.self="handleTitle" />
   	<textarea v-model="note.content" v-on:keydown.self="handleContent">
   	</textarea>
   	<div class="btns-editing">
-  		<span v-on:click.stop.prevent="save">save</span>
-  		<span v-on:click.stop.prevent="cancel">cancel</span>
+  		<span v-touch:tap.stop.prevent="save">save</span>
+  		<span v-touch:tap.stop.prevent="cancel">cancel</span>
   	</div>
   </div>
 </template>
@@ -16,9 +16,9 @@ $width: 80%;
 
 .edit-panel {
 	width: 100%;
-	height: 100%;
-	min-height: 100%;
-	padding-top: 20%;
+	height: 90%;
+	position: relative;
+	top: 4%;
 	background: #f8f8f8;;
 	border-radius: .5rem;
 	display: block;
@@ -26,8 +26,8 @@ $width: 80%;
 	input {
 		background: #CCF3E4;
 		width: $width;
-		margin: 0 auto;
-		height: 5%;
+		margin: 1% auto 1% auto;
+		height: 8%;
 		display: block;
 
 		border-radius: .5rem;
@@ -36,15 +36,13 @@ $width: 80%;
 		color: #000000;
 
 		padding: .5rem;
-
-		margin-bottom: 2rem;
 	}
 
 	textarea {
 		background: #CCF3E4;
 		width: $width;
-		margin: 0 auto;
-		height: 60%;
+		margin: 1% auto 1% auto;
+		height: 78%;
 		display: block;
 
 		border-radius: .5rem;
@@ -54,13 +52,16 @@ $width: 80%;
 
 		padding: .5rem;
 
-		margin-bottom: 2rem;
+		&:after {
+			content: '';
+			height: 10%;
+		}
 	}
 
 	.btns-editing {
 		width: $width;
 		margin: 0 auto;
-		height: 10%;
+		height: 8%;
 		display: flex;
 		justify-content: space-between;
 
@@ -91,7 +92,7 @@ export default {
   props:['state','actions'],
   data() {
   	let date = new Date()
-  	let note = this.state.onEditNote
+  	let note = this.state.onEditNote || {title:'',content:''}
   	return {
   		note: note,
   		userTitle: !!note.title,

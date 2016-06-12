@@ -2,7 +2,7 @@
   <div class="notes">
    	<ul>
    		<li v-for="note in notes">
-   			<note :data="note" v-on:click.stop.prevent="onEditNote(note.id)"></note>
+   			<note :data="note" v-touch:tap.stop.prevent="onEditNote(note.id)"></note>
    		</li>
    	</ul>
   </div>
@@ -14,11 +14,12 @@ $moli-green:#CCF3E4;
 $moli-white:#f8f8f8;
 
 div.notes {
-	min-height: 80%;
+	height: 80%;
+  overflow: auto;
   margin: 10% 0;
 
   ul {
-    padding : 1rem 1rem 8rem 1rem;
+    padding : 1rem 1rem 0 1rem;
     li {
         background: $moli-green;
         list-style-type: none;
@@ -57,10 +58,10 @@ export default {
   name: 'notes',
   props:['state', 'actions'],
   data() {
-  	this.actions.fetchNotes(notes)
+  	//this.actions.fetchNotes(notes)
   	return {
   		content: 'Edit text',
-  		notes: this.state.notes,
+  		notes: this.state.notes
   	}
   },
   methods: {

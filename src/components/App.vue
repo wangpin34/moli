@@ -1,14 +1,13 @@
 <template>
   <div class="moli">
-    <app-head></app-head>
-    
-    <notes v-if="!state.editing" :state="state" :actions="actions" transition="slide"></notes>
-    
-    <div class="btns" v-if="!state.editing">
-      <span class="addNote" v-on:click.stop.prevent="actions.addNote()">+</span>
-    </div>
-
-    <edit-panel v-else :state="state" :actions="actions" transition="slide"></edit-panel>
+    <template v-if="!state.editing">
+        <app-head></app-head>
+        <notes :state="state" :actions="actions"></notes>
+        <div class="btns">
+            <span class="addNote" v-touch:tap.stop.prevent="actions.addNote()">+</span>
+        </div>
+    </template>
+    <edit-panel v-if="state.editing" :state="state" :actions="actions" transition="slide"></edit-panel>
   </div>
 </template>
 
@@ -17,35 +16,33 @@ $moli-green:#CCF3E4;
 $moli-white:#f8f8f8;
 
 html {
-	font-size: 6px;
-	background-color:#f8f8f8;
+    font-size: 6px;
+    background-color:#f8f8f8;
 }
 html,body{
-	width: 100%;
-	height: 100%;
-  min-height: 100%;
-	margin: 0;
-	padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 div.moli {
-  height: 100%;
-  min-height: 100%;
-	font-size: 3rem;
-	min-height: 100%;
+    height: 100%;
+    font-size: 3rem;
+    min-height: 100%;
+    overflow: hidden;
 
   /* 必需 */
   .slide-transition {
-    transition: all .3s ease;
+    transition: all 1s ease;
     overflow: hidden;
   }
 
   /* .slide-enter 定义进入的开始状态 */
   /* .slide-leave 定义离开的结束状态 */
   .slide-enter, .slide-leave {
-    height: 0;
-    padding: 0 10px;
-    opacity: 0;
+    width: 0;
+    display: none;
   }
 
   .btns {
@@ -81,19 +78,20 @@ div.moli {
 </style>
 
 <script>
-import { state, actions } from '../store'
+import store from '../store'
 import AppHead from './AppHead.vue'
 import Notes from './Notes.vue'
 import EditPanel from './EditPanel.vue'
 
-
 export default {
   
   data() {
-  	return {
-  		state,
-  		actions 
-  	}
+    let state = store.state
+    let actions = store
+    return {
+        state,
+        actions    
+      }
   },
   components: {
     AppHead,
