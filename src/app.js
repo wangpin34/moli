@@ -1,5 +1,8 @@
 import Vue from 'vue'
+import VueTouch from 'vue-touch'
 import App from './components/App.vue'
+
+Vue.use(VueTouch)
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
