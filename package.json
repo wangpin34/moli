@@ -23,10 +23,12 @@
   "homepage": "https://github.com/wangpin34/moli#readme",
   "devDependencies": {
     "babel": "^6.5.2",
-    "babel-core": "^6.9.0",
+    "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
+    "babel-plugin-transform-object-assign": "^6.8.0",
     "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babel-runtime": "^6.9.0",
     "css-loader": "^0.23.1",
@@ -40,7 +42,9 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "babel-polyfill": "^6.9.1",
     "fs-h5": "^1.2.0",
-    "vue": "^1.0.24"
+    "vue": "^1.0.24",
+    "vue-touch": "^1.1.0"
   }
 }

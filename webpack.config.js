@@ -5,7 +5,7 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 module.exports = {
     devtool: 'sourcemap',
     entry: {
-        app:'./src/app',
+        app: ['babel-polyfill', './src/app'],
         vendor: ['vue']
     },
     output: {
