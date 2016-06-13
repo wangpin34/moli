@@ -3,8 +3,7 @@
 
 ## Supported platforms
 
-* browser
-* android
+* Android
 
 ## Plugin used
 
