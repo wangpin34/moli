@@ -1,13 +1,13 @@
 <template>
   <div class="moli">
-    <template v-if="!state.editing">
+    <div class="main-pad" v-show="!state.editing">
         <app-head></app-head>
         <notes :state="state" :actions="actions"></notes>
         <div class="btns">
             <span class="addNote" v-touch:tap.stop.prevent="actions.addNote()">+</span>
         </div>
-    </template>
-    <edit-panel v-if="state.editing" :state="state" :actions="actions" transition="slide"></edit-panel>
+    </div>
+    <edit-panel v-else :state="state" :actions="actions" transition="slide"></edit-panel>
   </div>
 </template>
 
@@ -45,6 +45,11 @@ div.moli {
     display: none;
   }
 
+  .main-pad {
+    overflow: auto;
+    height: 100%;
+  }
+
   .btns {
     z-index: 10;
     width: 100%;
@@ -78,7 +83,7 @@ div.moli {
 </style>
 
 <script>
-import store from '../store'
+import {state, actions} from '../store'
 import AppHead from './AppHead.vue'
 import Notes from './Notes.vue'
 import EditPanel from './EditPanel.vue'
@@ -86,8 +91,6 @@ import EditPanel from './EditPanel.vue'
 export default {
   
   data() {
-    let state = store.state
-    let actions = store
     return {
         state,
         actions    

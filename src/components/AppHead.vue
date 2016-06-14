@@ -23,13 +23,13 @@ div.header{
 
 </style>
 <script>
-import store from '../store'
+import { state } from '../store'
 
 export default {
 	name: 'app-head',
 	data() {
 		return {
-			total : Object.keys(store.state.notes).length,
+			total : Object.keys(state.notes).length,
 		}
 	},
 

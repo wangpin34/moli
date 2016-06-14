@@ -1,7 +1,7 @@
 <template>
   <div class="edit-panel">
-  	<input type="text" v-model="note.title" v-on:keydown.self="handleTitle" />
-  	<textarea v-model="note.content" v-on:keydown.self="handleContent">
+  	<input type="text" v-model="state.onEditNote.title" v-on:keydown.self="handleTitle" />
+  	<textarea v-model="state.onEditNote.content" v-on:keydown.self="handleContent">
   	</textarea>
   	<div class="btns-editing">
   		<span v-touch:tap.stop.prevent="save">save</span>
@@ -92,16 +92,14 @@ export default {
   props:['state','actions'],
   data() {
   	let date = new Date()
-  	let note = this.state.onEditNote || {title:'',content:''}
   	return {
-  		note: note,
-  		userTitle: !!note.title,
+  		userTitle: !!this.state.onEditNote.title,
   		date: (date.getMonth() + 1) + '/' + date.getDate()
   	}
   },
   methods:{
   	save() {
-  		this.actions.updateNote(this.note)
+  		this.actions.updateNote(Object.assign({}, this.state.onEditNote))
   	},
   	cancel() {
   		this.actions.cancelEdit()
@@ -112,7 +110,7 @@ export default {
   	handleContent() {
   		//Use first 10 chars of content as title if user has not privide title
   		if(!this.userTitle){
-  			this.note.title = this.note.content.substring(0, 10)
+  			this.state.onEditNote.title = this.state.onEditNote.content.substring(0, 10)
   		}
   	}
   }

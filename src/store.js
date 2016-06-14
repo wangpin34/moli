@@ -1,52 +1,51 @@
-export default {
+const addNote = (title = '', content = '') => {
+	return {
+		id: Math.random() + '',
+		title: 'sample',
+		content,
+		createdAt: new Date(),
+		updatedAt: new Date()
+	}
+}
 
-	state: {
-		notes: {},
-		onEditNote: null,
-		editing: false
-	},
+export const state = {
+	notes: {},
+	onEditNote: addNote(),
+	editing: false
+}
+
+export const actions =  {
 
 	//Go to edit the select note
 	goEdit(id) {
-		this.state.editing = true
-		this.state.onEditNote = Object.assign({}, this.state.notes[id])
+		state.onEditNote = Object.assign({}, state.notes[id])
+		state.editing = true
 	},
 
 	//Go to add a new note
 	addNote() {
-		let note = addNote()
-		this.state.onEditNote = Object.assign({}, note)
-		this.state.editing = true		
+		state.onEditNote = Object.assign({}, addNote())
+		state.editing = true		
 	},
 
 	//Update the specify note
 	updateNote(note) {
-		note = Object.assign({}, note)
 		note.updatedAt = new Date()
-		this.state.notes[note.id] = note
-		this.state.editing = false
+		let obj = {}
+		obj[note.id] = note
+		state.notes = Object.assign({}, state.notes, obj)
+		state.editing = false
 	},
 
 	//Cancel current edit, it shall be add note or update note
 	cancelEdit() {
-		this.state.editing = false
-		this.state.onEditNote = null
+		state.editing = false
 	},
 
 	//Fetch notes from local file system
 	fetchNotes(notes) {
 		//let notes = []
-		this.state.notes = Object.assign(this.state.notes, notes)
+		state.notes = Object.assign(state.notes, notes)
 	}
 
-}
-
-const addNote = (title = '', content = '') => {
-	return {
-		id: Math.random() + '',
-		title,
-		content,
-		createdAt: new Date(),
-		updatedAt: new Date()
-	}
 }
