@@ -3,8 +3,7 @@
 
 ## Supported platforms
 
-* browser
-* android
+* Android
 
 ## Plugin used
 
@@ -21,7 +20,5 @@ cordova-plugin-splashscreen
 npm run build
 ```
 
-### Dev progress
-* v0.0.1
-
-![v0.0.1](http://rawgit.com/wangpin34/moli/master/assets/dev-progress/v0.0.1.gif)
+## screen shot
+![v0.0.1](http://rawgit.com/wangpin34/moli/master/assets/GIF.gif)
