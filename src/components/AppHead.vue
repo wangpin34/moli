@@ -1,6 +1,6 @@
 <template>
 	<div class="header">
-		<h3>MOLI({{ total }})</h3>
+		<h3>Moli({{ total }})</h3>
 	</div>
 </template>
 <style lang="sass">
@@ -23,16 +23,10 @@ div.header{
 
 </style>
 <script>
-import { state } from '../store'
 
 export default {
 	name: 'app-head',
-	data() {
-		return {
-			total : Object.keys(state.notes).length,
-		}
-	},
-
+	props:['total'],
 	methods: {
 
 	}

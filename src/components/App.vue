@@ -1,13 +1,13 @@
 <template>
   <div class="moli">
     <div class="main-pad" v-show="!state.editing">
-        <app-head></app-head>
-        <notes :state="state" :actions="actions"></notes>
+        <app-head :total="state.total"></app-head>
+        <notes :notes="state.notes" :actions="actions"></notes>
         <div class="btns">
             <span class="addNote" v-touch:tap.stop.prevent="actions.addNote()">+</span>
         </div>
     </div>
-    <edit-panel v-else :state="state" :actions="actions" transition="slide"></edit-panel>
+    <edit-panel v-else :note="state.onEditNote" :actions="actions" transition="slide"></edit-panel>
   </div>
 </template>
 

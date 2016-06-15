@@ -1,7 +1,7 @@
 <template>
   <div class="notes">
    	<ul>
-   		<li v-for="note in state.notes">
+   		<li v-for="note in notes">
    			<note :data="note" v-touch:tap.stop.prevent="onEditNote(note.id)"></note>
    		</li>
    	</ul>
@@ -56,7 +56,13 @@ const notes = {
 
 export default {
   name: 'notes',
-  props:['state', 'actions'],
+  props:['notes', 'actions'],
+  ready() {
+    this.actions.fetchNotes()
+  },
+  beforeDestory() {
+    this.actions.syncSnapshot()
+  },
   methods: {
   	onEditNote(id) {
   		this.actions.goEdit(id)

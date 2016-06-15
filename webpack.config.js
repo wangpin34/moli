@@ -6,7 +6,7 @@ module.exports = {
     devtool: 'sourcemap',
     entry: {
         app: ['babel-polyfill', './src/app'],
-        vendor: ['vue']
+        vendor: ['vue','underscore','fs-h5']
     },
     output: {
         path: path.join(__dirname, '/www/js'),
@@ -16,7 +16,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.vue$/, loader: 'vue', exclude: /node_modules/},
-            { test: /\.js$/, loader:'babel', exclude: /node_modules/}
+            { test: /\.js$/, loader:'babel', query: {presets: ['es2015']}}
         ]
     },
     plugins: [new webpack.optimize.CommonsChunkPlugin({
