@@ -20,5 +20,6 @@ cordova-plugin-splashscreen
 npm run build
 ```
 
+
 ## screen shot
-<iframe src="https://modao.cc/app/77TsEuMDqnSl9vj36G0BtLu6GQe0szx/embed" width="440" height="828" allowTransparency="true" frameborder="0"></iframe>
+[UX design](https://modao.cc/app/77TsEuMDqnSl9vj36G0BtLu6GQe0szx/embed)
