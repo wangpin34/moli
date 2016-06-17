@@ -21,4 +21,4 @@ npm run build
 ```
 
 ## screen shot
-![v0.0.1](http://rawgit.com/wangpin34/moli/master/assets/GIF.gif)
+<iframe src="https://modao.cc/app/77TsEuMDqnSl9vj36G0BtLu6GQe0szx/embed" width="440" height="828" allowTransparency="true" frameborder="0"></iframe>
